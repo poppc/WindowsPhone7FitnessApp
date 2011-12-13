@@ -1,0 +1,17 @@
+<local:MainViewModel 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:USA_FitnessApp" 
+    SampleProperty="Sample Text Property Value">
+    
+    <local:MainViewModel.Items>
+        <local:ItemViewModel LineOne="Meal 1" LineTwo="12 oz. chicken" LineThree="1 cup of egg whites" LineFour="1 cup of cream of rice"/>
+        <local:ItemViewModel LineOne="Meal 2" LineTwo="12 oz. ground beef" LineThree="8 oz. whole wheat pasta" LineFour=""/>
+        <local:ItemViewModel LineOne = "Meal 3" LineTwo = "8 oz. beef tenderloin" LineThree = "10 oz. white potato" LineFour = "1 cup of spinach"/>
+        <!--<local:ItemViewModel LineOne="Meal 4" LineTwo="Nascetur pharetra placerat pulvinar" LineThree="Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum"/>
+        <local:ItemViewModel LineOne="Meal 5" LineTwo="Sagittis senectus sociosqu suscipit" LineThree="Dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis"/>
+        <local:ItemViewModel LineOne="Meal 6" LineTwo="Torquent ultrices vehicula volutpat" LineThree="Senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend"/>
+        -->
+    </local:MainViewModel.Items>
+    
+</local:MainViewModel>

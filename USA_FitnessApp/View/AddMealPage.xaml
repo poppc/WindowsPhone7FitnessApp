@@ -1,0 +1,102 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="USA_FitnessApp.AddMealPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/PanoramaBackground.png" Stretch="None" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="PageTitle" Text="{Binding Path=LocalizedResources.AddMealPageTitle, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="25,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <toolkit:TimePicker Name="timePicker" Grid.Column="0" Grid.Row="0" />
+            <toolkit:ListPicker Name="mealTimePicker" ItemsSource="{Binding ALL_MEAL_TIMES}" Grid.Column="1" Grid.Row="0" />
+
+            <Grid Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" Margin="25,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" >
+                    <TextBox Name ="quantityTxt" Text="20" InputScope="CurrencyAmount" />
+                    <TextBlock Name="unitTxtBlock" TextAlignment="Center" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <toolkit:ListPicker Name="categoryPicker" ItemsSource="{Binding ALL_FOOD_ITEM_CATEGORIES}" Grid.Column="1" Grid.Row="1" SelectionChanged="categoryPicker_SelectionChanged" />
+
+                <Button Content="{Binding Path=LocalizedResources.AddButton, Source={StaticResource LocalizedStrings}}" Grid.Column="0" Grid.Row="2" Click="Add_Click" />
+
+                <toolkit:ListPicker Name="foodItemPicker" Grid.Column="1" Grid.Row="2" SelectionChanged="foodItemPicker_SelectionChanged" />
+
+                <ListBox Name="FoodItemTxtBlock" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="3" ItemsSource="{Binding MealToAdd.FoodItems}" Margin="25,20,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="{Binding Quantity}" />
+                                <TextBlock Text=" " />
+                                <TextBlock Text="{Binding Unit}" />
+                                <TextBlock Text=" " />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Content="{Binding Path=LocalizedResources.SaveButton, Source={StaticResource LocalizedStrings}}" Grid.Column="0" Grid.Row="1" Click="Save_Click" />
+                <Button Content="{Binding Path=LocalizedResources.CancelButton, Source={StaticResource LocalizedStrings}}" Grid.Column="1" Grid.Row="1" Click="Cancel_Click" />
+            </Grid>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
